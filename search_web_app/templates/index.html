@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Web Application</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Web Application</h1>
+        <form action="/search" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="">
+            <input type="text" name="query" placeholder="Enter search query">
+            <button type="submit">Search</button>
+        </form>
+        <div id="searchResults">
+            {% if search_results %}
+                <h2>Search Results:</h2>
+                <ul>
+                    {% for result in search_results %}
+                        <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
